@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LikesCalculator } from './LikesCalculator';
 import './LikesPage.css';
 
@@ -7,50 +8,39 @@ export default function LikesPage() {
   const [score2, setScore2] = useState(0);
   const [score3, setScore3] = useState(0);
   const [score4, setScore4] = useState(0);
+  const [showToast, setShowToast] = useState(false);
+
+  const navigate = useNavigate();
 
   const finalScore = likesScore + score2 + score3 + score4;
 
   return (
     <div className="likes-page">
-      {/* <div className="left-column">
-        <div className="user-profile">
-            <img src="/profile_pic.png" alt="Post visual" />
-            <h2>Mo</h2>
-            <p><strong>Followed users:</strong>@selena_swift</p>
-            <p><strong>Followed hashtags:</strong> #music, #art</p>
-            <p><strong>Bio:</strong> Mo enjoys doing drawing and painting in his free time. He plays the flute in the school band and is a massive fan of Selena Swift!</p>
+      {/* Profile Section */}
+      <div className="column card profile-section">
+        <h2>Pic & Post</h2>
+        <div className="profile-card">
+          <img src="/profile_pic.png" alt="Post visual" width={200} height={200} />
+          <h2>Mo</h2>
+          <p>Followed users: @selena_swift</p>
+          <p>Followed hashtags: #music, #art</p>
+          <p><strong>Bio:</strong> Mo enjoys doing drawing and painting in his free time. He plays the flute in the school band and is a massive fan of Selena Swift!</p>
         </div>
-        <div className="post-preview">
-          
-          <img src="/post.png" alt="Post visual" width={300} height={400}/>
-          
-        </div>
-      </div> */}
+      </div>
 
-        
-        <div className="column card profile-section">
-            <h2>Pic & Post</h2>
-            <div className="profile-card">
-                <img src="/profile_pic.png" alt="Post visual" width={200} height={200}/>
-                <h2>Mo</h2>
-                <p>Followed users: @selena_swift</p>
-                <p>Followed hashtags: #music, #art</p>
-                <p><strong>Bio:</strong> Mo enjoys doing drawing and painting in his free time. He plays the flute in the school band and is a massive fan of Selena Swift!</p>
-            </div>
-        </div>
-       
+      {/* Builder Section */}
+      <div className="column card builder-section">
+        <h2>Algorithm Builder</h2>
+        <LikesCalculator
+          onScoreChange={(score) => {
+            setLikesScore(score);
+            setShowToast(true); // Keep toast visible
+          }}
+        />
+      </div>
 
-      {/* <div className="middle-column">
-        <LikesCalculator onScoreChange={setFinalScore} />
-      </div> */}
-
-        <div className="column card builder-section">
-            <h2>Algorithm Builder</h2>
-            {/* LikesCalculator is here */}
-            <LikesCalculator onScoreChange={setLikesScore} />
-        </div>
-
-        <div className="column card score-section">
+      {/* Final Score Section */}
+      <div className="column card score-section">
         <h2>Final Score Breakdown</h2>
         <p>1. Number of likes = <strong>{likesScore.toFixed(2)}</strong></p>
         <p className="plus">+</p>
@@ -62,6 +52,19 @@ export default function LikesPage() {
         <hr />
         <h3>Final Score: <span className="final-score">{finalScore.toFixed(2)}</span></h3>
       </div>
+
+      {/* Toast Popup */}
+      {showToast && finalScore > 0 && (
+        <div className="toast" role="alert" aria-live="polite">
+          <p>
+            You’ve calculated the likes score.<br />
+            Move on to the next question when you're ready.
+          </p>
+          <button className="next-button" onClick={() => navigate('/next')}>
+            Next →
+          </button>
+        </div>
+      )}
     </div>
   );
 }

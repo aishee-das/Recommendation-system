@@ -24,6 +24,7 @@ import LikesPage from './LikesPage';
 // import HowToPlay from './pages/HowToPlay';
 import Layout from './component/Layout';
 import FollowPosterPage from './FollowPosterPage';
+import FollowedUserLikedPage from './FollowedUserLikedPage';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           {/* <Route path="/how-to-play" element={<HowToPlay />} /> */}
           <Route path="/questions" element={<QuestionSelector />} />
           <Route path="/hashtags" element={<FollowHashtags />} />
+          <Route path="/liked-by-followed-users" element={<FollowedUserLikedPage />} />
         </Routes>
       </Layout>
     </Router>

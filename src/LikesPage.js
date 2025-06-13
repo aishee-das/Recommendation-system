@@ -62,7 +62,7 @@ export default function LikesPage() {
 
       {/* Builder Section */}
       <div className="column card builder-section">
-        <h2>Algorithm Builder</h2>
+        <h2>Algorithm Builder: Likes</h2>
         <LikesCalculator
           onScoreChange={(score) => {
             setLikesScore(score);

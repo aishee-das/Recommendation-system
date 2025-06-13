@@ -61,7 +61,7 @@ export default function FollowPosterPage() {
 
       {/* Middle Column */}
       <div className="column card builder-section">
-        <h2>Algorithm Builder</h2>
+        <h2>Algorithm Builder: Follow Poster</h2>
 
         <div className="input-block">
           <h3>1. Choose a weight (0–10):</h3>

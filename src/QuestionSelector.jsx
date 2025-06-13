@@ -1,45 +1,53 @@
-import React from "react";
-import "./QuestionSelector.css";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './LikesPage.css';
 
-const questions = [
-  "Do they follow the poster?",
-  "Do they follow any of the hashtags?",
-  "Has anyone they follow liked the post?",
-  "How recent is the post?",
-  "Has the content paid to be promoted?",
-];
+export default function PromptSelectionPage() {
+  const [likesScore, setLikesScore] = useState(0);
+  const [score2, setScore2] = useState(0);
+  const [score3, setScore3] = useState(0);
+  const [score4, setScore4] = useState(0);
+  const [selectedPrompt, setSelectedPrompt] = useState(null);
 
-const QuestionSelector = () => {
+  const navigate = useNavigate();
+  const finalScore = likesScore + score2 + score3 + score4;
+
+  const prompts = [
+    "Do they follow any of the hashtags?",
+    "Has anyone they follow liked the post?",
+    "How recent is the post?",
+    "Has the content paid to be promoted?"
+  ];
+
   return (
-    <div className="question-page">
+    <div className="likes-page">
+      {/* Prompt Selector */}
+      <div className="column card builder-section">
+        <h2>What Next?</h2>
+        {prompts.map((prompt, index) => (
+          <button
+            key={index}
+            className={`prompt-button ${selectedPrompt === index ? 'selected' : ''}`}
+            onClick={() => setSelectedPrompt(index)}
+          >
+            {prompt}
+          </button>
+        ))}
+      </div>
 
-      <div className="question-grid">
-        {/* Left column: Questions */}
-        <div className="question-list">
-          <h2>What next?</h2>
-          {questions.map((q, index) => (
-            <button className="question-button" key={index}>
-              {q}
-            </button>
-          ))}
-        </div>
-
-        {/* Right column: Formula-style layout */}
-        <div className="score-panel">
-          <p><strong>1. Number of likes</strong></p>
-          <div className="score-placeholder"></div>
-          <p>+</p>
-          <p><strong>2.</strong></p>
-          <p>+</p>
-          <p><strong>3.</strong></p>
-          <p>+</p>
-          <p><strong>4.</strong></p>
-          <p>=</p>
-          <p><strong>Final score:</strong></p>
-        </div>
+      {/* Final Score Section */}
+      <div className="column card score-section">
+        <h2>Final Score Breakdown</h2>
+        <p>1. Number of likes = <strong>{likesScore.toFixed(2)}</strong></p>
+        <p className="plus">+</p>
+        <p>2. Follows poster = <strong>{score2.toFixed(2)}</strong></p>
+        <p className="plus">+</p>
+        <p>3. ... = <strong>{score3.toFixed(2)}</strong></p>
+        <p className="plus">+</p>
+        <p>4. ... = <strong>{score4.toFixed(2)}</strong></p>
+        <hr />
+        <h3>Final Score: <span className="final-score">{finalScore.toFixed(2)}</span></h3>
       </div>
     </div>
   );
-};
-
-export default QuestionSelector;
+}

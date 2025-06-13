@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProfileSelector from "./ProfileSelector";
-// import QuestionSelector from "./QuestionSelector";
+import QuestionSelector from "./QuestionSelector";
 // import React from "react";
 // import "./App.css";
 // import ProfileSelector from "./ProfileSelector";
@@ -33,7 +33,7 @@ function App() {
           <Route path="/likes" element={<LikesPage />} />
           <Route path="/follow-poster" element={<FollowPosterPage />} />
           {/* <Route path="/how-to-play" element={<HowToPlay />} /> */}
-          {/* <Route path="/questions" element={<QuestionSelector />} /> */}
+          <Route path="/questions" element={<QuestionSelector />} />
         </Routes>
       </Layout>
     </Router>

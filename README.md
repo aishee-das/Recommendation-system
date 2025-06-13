@@ -29,42 +29,39 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Algorithm Builder: Social Media Feed Game
+Welcome to the Algorithm Builder, an interactive educational game that teaches young users how social media algorithms work by letting them build and customise their own!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Purpose:
+This project is designed to raise awareness and critical thinking around how online content is ranked and recommended, specifically within social media platforms. Players are guided through a series of questions that help them understand how algorithms can use factors like likes, follows, hashtags, recency, and paid promotion to determine what content appears on their feed.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Gameplay Overview:
+Choose Your Profile
+Players begin by selecting a character profile. Each one has unique interests and follows different users and hashtags.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Customize the Algorithm
+The player is presented with a series of questions across different pages, such as:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+How many likes does the post have?
 
-## Learn More
+Does the user follow the poster?
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Are any followed hashtags used?
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+How recent is the post?
 
-### Code Splitting
+Has the content been promoted?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Adjust Importance
+Each question allows the player to assign a weight (importance) to that factor on a scale of 0–10.
 
-### Analyzing the Bundle Size
+Enter Values
+The player inputs values for each factor (e.g. number of likes, time since posted).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Score Breakdown
+A running breakdown on the right-hand side calculates the score live, showing how each factor contributes to the final score.
 
-### Making a Progressive Web App
+See Results & Reflect
+Players can reflect on how small changes (like a paid promotion or a recent post) can drastically affect what they see online.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -14,7 +14,7 @@ export function LikesCalculator({ onScoreChange }) {
 
   return (
     <div className="likes-calculator">
-      <h2>Q. Number of Likes</h2>
+      <h2>1. Choose a weight (0 to 10) for number of likes.</h2>
       <input
         className="slider"
         type="range"
@@ -25,18 +25,32 @@ export function LikesCalculator({ onScoreChange }) {
       />
       <div className="slider-label">Importance: {weight}/10</div>
 
-      <h2>Q. How many likes does the post have?</h2>
-      <input
-        className="number-input"
-        type="number"
-        value={likes}
-        onChange={(e) => setLikes(Number(e.target.value))}
-      />
+      <h2>2. How many likes does the post have?</h2>
+<input
+  className="number-input"
+  type="number"
+  placeholder="Enter number"
+  value={likes === null ? '' : likes}
+  onChange={(e) =>
+    setLikes(e.target.value === '' ? null : Number(e.target.value))
+  }
+/>
 
-      <h3>Score:</h3>
+
+      <h3>3. Calculated score:</h3>
       <div className="score-breakdown">
-        ({weight} / 10) * {likes} = <strong>{score.toFixed(2)}</strong>
-      </div>
+        <span className="fraction">
+            <span className="boxed top">{weight}</span>
+            <span className="line"></span>
+            <span className="bottom">10</span>
+        </span>
+        <span className="math-symbol">×</span>
+        <span className="boxed">{likes}</span>
+        <span className="math-symbol">=</span>
+        <strong>{score.toFixed(2)}</strong>
+        </div>
+
+
     </div>
   );
 }

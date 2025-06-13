@@ -1,0 +1,24 @@
+.likes-calculator {
+    padding: 1rem;
+    font-family: sans-serif;
+  }
+  
+  .slider {
+    width: 100%;
+  }
+  
+  .slider-label {
+    margin-bottom: 1rem;
+  }
+  
+  .number-input {
+    width: 100px;
+    padding: 0.25rem;
+    margin-top: 0.5rem;
+  }
+  
+  .score-breakdown {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+  }
+  

@@ -56,6 +56,7 @@
     background: #fef6ec;
     font-family: 'Segoe UI', sans-serif;
     justify-content: space-around;
+    height: calc(100vh - 130px); /* Adjust for navbar height */
   }
   
   .column {
@@ -71,7 +72,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     width: 100%;
-    max-width: 340px;
+    max-width: 500px;
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
   }
   
   .profile-section h2,
@@ -98,9 +102,44 @@
     font-weight: bold;
     color: #007bff;
   }
+  .profile-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* this pushes arrows to bottom */
+  }
   
   hr {
     width: 100%;
     margin: 1rem 0;
   }
   
+  .carousel-controls {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7rem;
+  }
+  
+  .nav-arrow {
+    /* width: 62px;
+    height: 62px; */
+    cursor: pointer;
+  }
+  
+  .dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .dot.active {
+    background: #000;
+  }

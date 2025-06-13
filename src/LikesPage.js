@@ -3,7 +3,12 @@ import { LikesCalculator } from './LikesCalculator';
 import './LikesPage.css';
 
 export default function LikesPage() {
-  const [finalScore, setFinalScore] = useState(0);
+  const [likesScore, setLikesScore] = useState(0);
+  const [score2, setScore2] = useState(0);
+  const [score3, setScore3] = useState(0);
+  const [score4, setScore4] = useState(0);
+
+  const finalScore = likesScore + score2 + score3 + score4;
 
   const [currentView, setCurrentView] = useState('bio'); // 'bio' or 'post'
 
@@ -66,18 +71,21 @@ export default function LikesPage() {
         <div className="column card builder-section">
             <h2>Algorithm Builder</h2>
             {/* LikesCalculator is here */}
-            <LikesCalculator onScoreChange={setFinalScore} />
+            <LikesCalculator onScoreChange={setLikesScore} />
         </div>
 
         <div className="column card score-section">
-            <h2>Final Score Breakdown</h2>
-            <p>1. Number of likes = {finalScore.toFixed(2)}</p>
-            <p>2. ...</p>
-            <p>3. ...</p>
-            <p>4. ...</p>
-            <hr />
-            <h3>Final Score: <span className="final-score">{finalScore.toFixed(2)}</span></h3>
-        </div>
+        <h2>Final Score Breakdown</h2>
+        <p>1. Number of likes = <strong>{likesScore.toFixed(2)}</strong></p>
+        <p className="plus">+</p>
+        <p>2. ... = <strong>{score2.toFixed(2)}</strong></p>
+        <p className="plus">+</p>
+        <p>3. ... = <strong>{score3.toFixed(2)}</strong></p>
+        <p className="plus">+</p>
+        <p>4. ... = <strong>{score4.toFixed(2)}</strong></p>
+        <hr />
+        <h3>Final Score: <span className="final-score">{finalScore.toFixed(2)}</span></h3>
+      </div>
     </div>
   );
 }

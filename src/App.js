@@ -1,12 +1,16 @@
 import React from "react";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProfileSelector from "./ProfileSelector";
+import QuestionSelector from "./QuestionSelector";
 
 function App() {
   return (
-    <div className="App">
-      <ProfileSelector />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<ProfileSelector />} />
+        <Route path="/questions" element={<QuestionSelector />} />
+      </Routes>
+    </Router>
   );
 }
 

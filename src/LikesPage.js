@@ -106,7 +106,7 @@ export default function LikesPage() {
             You’ve calculated the likes score.<br />
             Move on to the next question when you're ready.
           </p>
-          <button className="next-button" onClick={() => navigate('/next')}>
+          <button className="next-button" onClick={() => navigate('/follow-poster', { state: { likesScore: likesScore } })}>
             Next →
           </button>
         </div>

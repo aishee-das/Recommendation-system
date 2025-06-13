@@ -22,6 +22,7 @@ import ProfileSelector from "./ProfileSelector";
 import LikesPage from './LikesPage';
 // import HowToPlay from './pages/HowToPlay';
 import Layout from './component/Layout';
+import FollowPosterPage from './FollowPosterPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProfileSelector />} />
           <Route path="/likes" element={<LikesPage />} />
+          <Route path="/follow-poster" element={<FollowPosterPage />} />
           {/* <Route path="/how-to-play" element={<HowToPlay />} /> */}
           {/* <Route path="/questions" element={<QuestionSelector />} /> */}
         </Routes>

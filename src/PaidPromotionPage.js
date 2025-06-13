@@ -2,31 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './LikesPage.css';
 
-export default function FollowHashtagsPage() {
+export default function PaidPromotionPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
   const likesScore = location.state?.likesScore || 0;
   const followScore = location.state?.followScore || 0;
+  const hashtagScore = location.state?.hashtagScore || 0;
+  const followerLikeScore = location.state?.followerLikeScore || 0;
+  const recencyScore = location.state?.recencyScore || 0;
 
-  const [hashtagScore, setHashtagScore] = useState(0);
-  const [score4, setScore4] = useState(0); // Placeholder for future use
-  const [numHashtagsFollowed, setNumHashtagsFollowed] = useState(0);
-  const [weight, setWeight] = useState(0);
+  const [paidScore, setPaidScore] = useState(0);
+  const [isPromoted, setIsPromoted] = useState(null);
   const [showToast, setShowToast] = useState(false);
   const [currentView, setCurrentView] = useState('bio');
 
-  const finalScore = likesScore + followScore + hashtagScore + score4;
+  const finalScore =
+    likesScore + followScore + hashtagScore + followerLikeScore + recencyScore + paidScore;
 
   const toggleView = () => {
     setCurrentView((prev) => (prev === 'bio' ? 'post' : 'bio'));
   };
 
   useEffect(() => {
-    const calcScore = (weight / 10) * numHashtagsFollowed;
-    setHashtagScore(calcScore);
-    if (numHashtagsFollowed > 0) setShowToast(true);
-  }, [weight, numHashtagsFollowed]);
+    const score = isPromoted === 'yes' ? 10 : 0;
+    setPaidScore(score);
+    if (isPromoted !== null) setShowToast(true);
+  }, [isPromoted]);
 
   return (
     <div className="likes-page">
@@ -58,43 +60,38 @@ export default function FollowHashtagsPage() {
 
       {/* Middle Column */}
       <div className="column card builder-section">
-        <h2>Algorithm Builder: Hashtags</h2>
+        <h2>Algorithm Builder</h2>
 
         <div className="input-block">
-          <h3>1. Choose a weight (0–10):</h3>
-          <input
-            type="range"
-            min="0"
-            max="10"
-            value={weight}
-            onChange={(e) => setWeight(Number(e.target.value))}
-          />
-          <div>Importance: {weight}/10</div>
-        </div>
-
-        <div className="input-block">
-          <h3>2. How many hashtags does the user follow from the post?</h3>
-          <input
-            type="number"
-            min="0"
-            max="10"
-            value={numHashtagsFollowed}
-            onChange={(e) => setNumHashtagsFollowed(Number(e.target.value))}
-          />
+          <h3>1. Has the content paid to be promoted?</h3>
+          <div className="radio-group">
+            <label>
+              <input
+                type="radio"
+                name="paid"
+                value="yes"
+                checked={isPromoted === 'yes'}
+                onChange={() => setIsPromoted('yes')}
+              />
+              Yes (+10 points)
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="paid"
+                value="no"
+                checked={isPromoted === 'no'}
+                onChange={() => setIsPromoted('no')}
+              />
+              No (0 points)
+            </label>
+          </div>
         </div>
 
         <div className="score-display">
-          <h3>3. Calculated Score:</h3>
+          <h3>2. Calculated Score:</h3>
           <div className="score-breakdown">
-            <span className="fraction">
-              <span className="boxed">{weight}</span>
-              <span className="line"></span>
-              <span>10</span>
-            </span>
-            <span className="math-symbol">×</span>
-            <span className="boxed">{numHashtagsFollowed}</span>
-            <span className="math-symbol">=</span>
-            <strong>{hashtagScore.toFixed(2)}</strong>
+            <strong>{paidScore} points</strong>
           </div>
         </div>
       </div>
@@ -108,11 +105,12 @@ export default function FollowHashtagsPage() {
         <p className="plus">+</p>
         <p>3. Follows hashtags = <strong>{hashtagScore.toFixed(2)}</strong></p>
         <p className="plus">+</p>
-        <p>4. ... = <strong>{score4.toFixed(2)}</strong></p>
+        <p>4. Followed users liked = <strong>{followerLikeScore.toFixed(2)}</strong></p>
         <p className="plus">+</p>
-        <p>5. ... = <strong>{score4.toFixed(2)}</strong></p>
+        <p>5. Recency = <strong>{recencyScore.toFixed(2)}</strong></p>
         <p className="plus">+</p>
-        <p>6. ... = <strong>{score4.toFixed(2)}</strong></p>
+        <p>6. Paid promotion = <strong>{paidScore.toFixed(2)}</strong></p>
+
         <h3>Final Score: <span className="final-score">{finalScore.toFixed(2)}</span></h3>
       </div>
 
@@ -120,19 +118,19 @@ export default function FollowHashtagsPage() {
       {showToast && (
         <div className="toast" role="alert" aria-live="polite">
           <p>
-            You’ve calculated the hashtag follow score.<br />
-            Move on to the next question when you're ready.
+            You’ve calculated the final score! 🎉<br />
+            You can now use this to rank content.
           </p>
           <button
-            className="next-button"
-            onClick={() =>
-              navigate('/liked-by-followed-users', {
-                state: { likesScore, followScore, hashtagScore },
-              })
-            }
-          >
-            Next →
-          </button>
+  className="next-button"
+  onClick={() => {
+    alert(`Final score is ${finalScore.toFixed(2)}`);
+    setShowToast(false); // Hide toast after finishing
+  }}
+>
+  Finish
+</button>
+
         </div>
       )}
     </div>

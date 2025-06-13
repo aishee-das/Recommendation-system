@@ -61,7 +61,7 @@ export default function FollowPosterPage() {
 
       {/* Middle Column */}
       <div className="column card builder-section">
-        <h2>Algorithm Builder</h2>
+        <h2>Algorithm Builder: Follow Poster</h2>
 
         <div className="input-block">
           <h3>1. Choose a weight (0–10):</h3>
@@ -127,7 +127,10 @@ export default function FollowPosterPage() {
         <p>3. ... = <strong>{score3.toFixed(2)}</strong></p>
         <p className="plus">+</p>
         <p>4. ... = <strong>{score4.toFixed(2)}</strong></p>
-        <hr />
+        <p className="plus">+</p>
+        <p>5. ... = <strong>{score4.toFixed(2)}</strong></p>
+        <p className="plus">+</p>
+        <p>6. ... = <strong>{score4.toFixed(2)}</strong></p>
         <h3>Final Score: <span className="final-score">{finalScore.toFixed(2)}</span></h3>
       </div>
 

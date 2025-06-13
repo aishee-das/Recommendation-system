@@ -1,32 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './LikesPage.css';
+import './LikesPage.css'; // reuse shared styles
 
-export default function FollowHashtagsPage() {
+export default function RecencyPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
   const likesScore = location.state?.likesScore || 0;
   const followScore = location.state?.followScore || 0;
+  const hashtagScore = location.state?.hashtagScore || 0;
+  const followerLikeScore = location.state?.followerLikeScore || 0;
 
-  const [hashtagScore, setHashtagScore] = useState(0);
-  const [score4, setScore4] = useState(0); // Placeholder for future use
-  const [numHashtagsFollowed, setNumHashtagsFollowed] = useState(0);
+  const [recencyScore, setRecencyScore] = useState(0);
   const [weight, setWeight] = useState(0);
+  const [minutesAgo, setMinutesAgo] = useState(0);
   const [showToast, setShowToast] = useState(false);
   const [currentView, setCurrentView] = useState('bio');
 
-  const finalScore = likesScore + followScore + hashtagScore + score4;
+  const finalScore = likesScore + followScore + hashtagScore + followerLikeScore + recencyScore;
 
   const toggleView = () => {
     setCurrentView((prev) => (prev === 'bio' ? 'post' : 'bio'));
   };
 
   useEffect(() => {
-    const calcScore = (weight / 10) * numHashtagsFollowed;
-    setHashtagScore(calcScore);
-    if (numHashtagsFollowed > 0) setShowToast(true);
-  }, [weight, numHashtagsFollowed]);
+    const calcScore = ((10 - weight) / 10) * minutesAgo;
+    setRecencyScore(calcScore);
+    if (minutesAgo > 0) setShowToast(true);
+  }, [weight, minutesAgo]);
 
   return (
     <div className="likes-page">
@@ -58,7 +59,7 @@ export default function FollowHashtagsPage() {
 
       {/* Middle Column */}
       <div className="column card builder-section">
-        <h2>Algorithm Builder: Hashtags</h2>
+        <h2>Algorithm Builder</h2>
 
         <div className="input-block">
           <h3>1. Choose a weight (0–10):</h3>
@@ -73,28 +74,29 @@ export default function FollowHashtagsPage() {
         </div>
 
         <div className="input-block">
-          <h3>2. How many hashtags does the user follow from the post?</h3>
+          <h3>2. How many minutes ago was the post uploaded?</h3>
           <input
             type="number"
             min="0"
-            max="10"
-            value={numHashtagsFollowed}
-            onChange={(e) => setNumHashtagsFollowed(Number(e.target.value))}
+            placeholder="Enter number of minutes"
+            value={minutesAgo}
+            onChange={(e) => setMinutesAgo(Number(e.target.value))}
           />
         </div>
 
         <div className="score-display">
           <h3>3. Calculated Score:</h3>
           <div className="score-breakdown">
+            <span>(1 - </span>
             <span className="fraction">
               <span className="boxed">{weight}</span>
               <span className="line"></span>
               <span>10</span>
             </span>
-            <span className="math-symbol">×</span>
-            <span className="boxed">{numHashtagsFollowed}</span>
-            <span className="math-symbol">=</span>
-            <strong>{hashtagScore.toFixed(2)}</strong>
+            <span>) × </span>
+            <span className="boxed">{minutesAgo}</span>
+            <span className="math-symbol"> = </span>
+            <strong>{recencyScore.toFixed(2)}</strong>
           </div>
         </div>
       </div>
@@ -108,11 +110,10 @@ export default function FollowHashtagsPage() {
         <p className="plus">+</p>
         <p>3. Follows hashtags = <strong>{hashtagScore.toFixed(2)}</strong></p>
         <p className="plus">+</p>
-        <p>4. ... = <strong>{score4.toFixed(2)}</strong></p>
+        <p>4. Followed users liked = <strong>{followerLikeScore.toFixed(2)}</strong></p>
         <p className="plus">+</p>
-        <p>5. ... = <strong>{score4.toFixed(2)}</strong></p>
-        <p className="plus">+</p>
-        <p>6. ... = <strong>{score4.toFixed(2)}</strong></p>
+        <p>5. Recency = <strong>{recencyScore.toFixed(2)}</strong></p>
+        <hr />
         <h3>Final Score: <span className="final-score">{finalScore.toFixed(2)}</span></h3>
       </div>
 
@@ -120,14 +121,20 @@ export default function FollowHashtagsPage() {
       {showToast && (
         <div className="toast" role="alert" aria-live="polite">
           <p>
-            You’ve calculated the hashtag follow score.<br />
+            You’ve calculated the recency score.<br />
             Move on to the next question when you're ready.
           </p>
           <button
             className="next-button"
             onClick={() =>
-              navigate('/liked-by-followed-users', {
-                state: { likesScore, followScore, hashtagScore },
+              navigate('/paid-promotion', {
+                state: {
+                  likesScore,
+                  followScore,
+                  hashtagScore,
+                  followerLikeScore,
+                  recencyScore
+                }
               })
             }
           >

@@ -141,7 +141,7 @@ export default function FollowPosterPage() {
           <button
             className="next-button"
             onClick={() =>
-              navigate('/questions', {
+              navigate('/hashtags', {
                 state: { likesScore, followScore: score2 },
               })
             }

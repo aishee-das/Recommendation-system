@@ -23,20 +23,6 @@ export default function LikesPage() {
 
   return (
     <div className="likes-page">
-      {/* <div className="left-column">
-        <div className="user-profile">
-            <img src="/profile_pic.png" alt="Post visual" />
-            <h2>Mo</h2>
-            <p><strong>Followed users:</strong>@selena_swift</p>
-            <p><strong>Followed hashtags:</strong> #music, #art</p>
-            <p><strong>Bio:</strong> Mo enjoys doing drawing and painting in his free time. He plays the flute in the school band and is a massive fan of Selena Swift!</p>
-        </div>
-        <div className="post-preview">
-          
-          <img src="/post.png" alt="Post visual" width={300} height={400}/>
-          
-        </div>
-      </div> */}
 
         
     <div className="column card profile-section">

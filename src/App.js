@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProfileSelector from "./ProfileSelector";
 import QuestionSelector from "./QuestionSelector";
+import FollowHashtags from "./FollowHashtags";
 // import React from "react";
 // import "./App.css";
 // import ProfileSelector from "./ProfileSelector";
@@ -34,6 +35,7 @@ function App() {
           <Route path="/follow-poster" element={<FollowPosterPage />} />
           {/* <Route path="/how-to-play" element={<HowToPlay />} /> */}
           <Route path="/questions" element={<QuestionSelector />} />
+          <Route path="/hashtags" element={<FollowHashtags />} />
         </Routes>
       </Layout>
     </Router>

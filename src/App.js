@@ -25,7 +25,8 @@ import LikesPage from './LikesPage';
 import Layout from './component/Layout';
 import FollowPosterPage from './FollowPosterPage';
 import FollowedUserLikedPage from './FollowedUserLikedPage';
-
+import RecencyPage from "./Recency";
+import PaidPromotionPage from './PaidPromotionPage';
 function App() {
   return (
     <Router>
@@ -38,6 +39,8 @@ function App() {
           <Route path="/questions" element={<QuestionSelector />} />
           <Route path="/hashtags" element={<FollowHashtags />} />
           <Route path="/liked-by-followed-users" element={<FollowedUserLikedPage />} />
+          <Route path="/recency" element={<RecencyPage />} />
+          <Route path="/paid-promotion" element={<PaidPromotionPage />} />
         </Routes>
       </Layout>
     </Router>

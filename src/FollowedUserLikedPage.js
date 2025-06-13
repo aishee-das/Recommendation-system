@@ -111,8 +111,13 @@ export default function FollowedUserLikedPage() {
         <p>3. Follows hashtags = <strong>{hashtagScore.toFixed(2)}</strong></p>
         <p className="plus">+</p>
         <p>4. Followed users liked = <strong>{followerLikeScore.toFixed(2)}</strong></p>
-        <hr />
+        <p className="plus">+</p>
+        <p>5. ... = <strong>{score5.toFixed(2)}</strong></p>
+        <p className="plus">+</p>
+        <p>6. ... = <strong>{score5.toFixed(2)}</strong></p>
         <h3>Final Score: <span className="final-score">{finalScore.toFixed(2)}</span></h3>
+
+        
       </div>
 
       {/* Toast */}

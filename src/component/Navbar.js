@@ -8,7 +8,7 @@ export default function Navbar() {
       <div className="navbar-logo">Feed Optimiser</div>
       <div className="navbar-links">
         <Link to="/">Home</Link>
-        <Link to="/likes">Likes</Link>
+
         <Link to="/how-to-play">How to Play</Link>
       </div>
     </nav>

@@ -127,7 +127,10 @@ export default function FollowPosterPage() {
         <p>3. ... = <strong>{score3.toFixed(2)}</strong></p>
         <p className="plus">+</p>
         <p>4. ... = <strong>{score4.toFixed(2)}</strong></p>
-        <hr />
+        <p className="plus">+</p>
+        <p>5. ... = <strong>{score4.toFixed(2)}</strong></p>
+        <p className="plus">+</p>
+        <p>6. ... = <strong>{score4.toFixed(2)}</strong></p>
         <h3>Final Score: <span className="final-score">{finalScore.toFixed(2)}</span></h3>
       </div>
 

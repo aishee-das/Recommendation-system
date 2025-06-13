@@ -17,8 +17,7 @@ const ProfileSelector = () => {
   const navigate = useNavigate();
 
   const selectProfile = (name) => {
-    alert(`You selected ${name}`);
-    navigate("/questions"); // Navigate to the question page
+    navigate("/likes"); // Navigate to the question page
   };
 
   return (

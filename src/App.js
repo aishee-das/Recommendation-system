@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProfileSelector from "./ProfileSelector";
-import QuestionSelector from "./QuestionSelector";
+// import QuestionSelector from "./QuestionSelector";
 // import React from "react";
 // import "./App.css";
 // import ProfileSelector from "./ProfileSelector";
@@ -16,9 +16,9 @@ import QuestionSelector from "./QuestionSelector";
 
 // export default App;
 
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProfileSelector from './ProfileSelector';
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import ProfileSelector from './ProfileSelector';
 import LikesPage from './LikesPage';
 // import HowToPlay from './pages/HowToPlay';
 import Layout from './component/Layout';
@@ -31,7 +31,7 @@ function App() {
           <Route path="/" element={<ProfileSelector />} />
           <Route path="/likes" element={<LikesPage />} />
           {/* <Route path="/how-to-play" element={<HowToPlay />} /> */}
-          <Route path="/questions" element={<QuestionSelector />} />
+          {/* <Route path="/questions" element={<QuestionSelector />} /> */}
         </Routes>
       </Layout>
     </Router>
